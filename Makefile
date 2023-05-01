@@ -6,12 +6,10 @@ scanner: ${DIR_SRC}/scanner.l ${DIR_SRC}/scanner_main.c ${DIR_INC}/scanner_token
 	flex ${DIR_SRC}/scanner.l
 	gcc lex.yy.c ${DIR_SRC}/scanner_main.c -ll -o scanner -I./inc
 	rm lex.yy.c
-	
-run_test: scanner test
 
 clean: 
 	rm ./scanner 
 	rm test/output*.txt
-test:
+test: ./scanner
 	./scanner < test/test1.py > test/output1.txt
 	./scanner < test/test2.py > test/output2.txt
