@@ -10,9 +10,8 @@ DIGIT  [0-9]
 "return"    { printf("RETURN\n"); }
 "and"       { printf("AND\n"); }
 "or"        { printf("OR\n"); }
+"in"        { printf("IN\n"); }
 "not"       { printf("NOT\n"); }
-"True"      { printf("TRUE\n"); }
-"False"     { printf("FALSE\n"); }
 "None"      { printf("NONE\n"); }
 
 "+"         { printf("PLUS\n"); }
@@ -35,19 +34,21 @@ DIGIT  [0-9]
 "}"         { printf("RBRACE\n"); }
 ","         { printf("COMMA\n"); }
 ":"         { printf("COLON\n"); }
-";"         { printf("SEMICOLON\n"); }
 "."         { printf("DOT\n"); }
 "="         { printf("ASSIGNMENT\n"); }
 
 {DIGIT}+               { printf("INTEGER\n"); }
 {DIGIT}*\.{DIGIT}+    { printf("FLOAT\n"); }
-^("[^\']+"|'[^\"]+')$   { printf("STRING\n"); }
-^#[^\n]*$               { printf("SINGLE LINE COMMENT\n"); }
-'{3}[^']*'{3}           { printf("MULTI LINE COMMENT\n"); }
+^("[^\']+"|'[^\"]+')$   { printf("SINGLE LINE STRING\n"); }
+'{3}[^']*'{3}           { printf("MULTI LINE STRING\n"); }
+(True|False)        { printf("BOOL\n"); }
 [a-zA-z][a-zA-Z0-9_]*             { printf("IDENTIFIER\n"); }
+^#[^\n]*$               { printf("SINGLE LINE COMMENT\n"); }
 
-[ \t\r]+        { /* ignore whitespace */ }
-\n              { /* ignore newlines */ }
+" "             { printf("SPACE\n"); }
+"\t"             { printf("TAB\n"); }
+"\r"            { printf("CARRIAGE RETURN\n"); }
+"\n"              { printf("NEWLINE\n"); }
 .               { printf("INVALID\n"); }
 
 %%
