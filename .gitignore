@@ -6,5 +6,12 @@
 
 # Unignore all dirs
 !*/
-*.yy.c
+
+# Default out file
 *.out
+
+# Flex file
+*.yy.c
+
+# .vscode folder
+.vscode/
