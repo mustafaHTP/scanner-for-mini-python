@@ -17,3 +17,6 @@
 
 # .vscode folder
 .vscode/
+
+# ignore .txt
+*.txt
